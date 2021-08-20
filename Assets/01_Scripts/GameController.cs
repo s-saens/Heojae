@@ -45,8 +45,10 @@ public class GameController : MonoBehaviour
     bool testFlag = true;
     private void OnClickTouchScreen(Vector2 touchPosition)
     {
+        Debug.Log("OnClickTouchScreen!");
         if(testFlag == true)
         {
+            Debug.Log("YEAH!");
             MakeRope((touchPosition - ball.Position).normalized);
             testFlag = false;
         }
