@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 public class Rope : MonoBehaviour
 {
-    public GameObject ropeObject;
     public GameObject stake;
 
     public int maxLinksCount;
-    public List<Link> links;
+    public List<Link> links = new List<Link>();
     public LinkFactory linkFactory;
+    public float linkSize;
 
     public void Shoot(Vector2 initPos, Vector2 direction)
     {
@@ -16,7 +16,8 @@ public class Rope : MonoBehaviour
         {
             links[i] = linkFactory.PoolLink();
             links[i].transform.rotation = Quaternion.Euler( 0, 0, (Mathf.Acos(initPos.y)) );
-            
+            links[i].transform.Translate(Vector3.up * linkSize * 0.5f);
+
             if(links[i].coll != null)
             {
                 break;
