@@ -7,7 +7,8 @@ public class MainSceneManager : MonoBehaviour
 {
     public Camera cam;
     public Text inviteCode;
-    public Text roomIdInputFieldText;
+    public InputField roomIdInputField;
+    public GameObject waitingPopup;
 
     private void Awake()
     {
@@ -36,6 +37,7 @@ public class MainSceneManager : MonoBehaviour
         void OnInviteCode(STCInviteCodeData data)
         {
             User.Instance.RoomId = data.roomId;
+            waitingPopup.SetActive(true);
             inviteCode.text = "INVITE CODE: " + data.roomId;
         }
     }
@@ -51,7 +53,8 @@ public class MainSceneManager : MonoBehaviour
     public void GameStartJoin()
     {
         User.Instance.isHost = false;
-        User.Instance.RoomId = roomIdInputFieldText.text;
+        User.Instance.RoomId = roomIdInputField.text;
+        Debug.Log(User.Instance.RoomId);
         SocketManager.Instance.Emit("join");
     }
     public void Settings()
