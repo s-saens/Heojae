@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 using socket.io;
 using Newtonsoft.Json;
 
@@ -18,7 +19,7 @@ public class SocketManager
         }
     }
 
-    public string roomId;
+    public string roomId = "test";
     public Socket socket;
 
     private SocketManager()
@@ -28,7 +29,7 @@ public class SocketManager
 
     private void Connect()
     {
-        string url = "";
+        string url = "http://146.56.137.29:3000/";
         this.socket = Socket.Connect(url);
     }
 
@@ -47,5 +48,14 @@ public class SocketManager
     private T ConvertJsonToObject<T>(string data)
     {
         return JsonConvert.DeserializeObject<T>(data);
+    }
+
+    public void Emit(string eventName, Dictionary<string, object> data)
+    {
+        data.Add("roomId", roomId);
+
+        string jsonString = JsonConvert.SerializeObject(data);
+
+        socket.EmitJson(eventName, jsonString);
     }
 }

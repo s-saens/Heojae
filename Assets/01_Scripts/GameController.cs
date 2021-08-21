@@ -19,6 +19,12 @@ public class GameController : MonoBehaviour
 
     public Player myPlayer;
 
+    private void Awake()
+    {
+        // SocketManager 초기화용 코드
+        SocketManager s = SocketManager.Instance;
+    }
+
     private void Start()
     {
         BindButtons();
