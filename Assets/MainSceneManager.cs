@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 public class MainSceneManager : MonoBehaviour
 {
     public Camera cam;
+    public Text inviteCode;
 
     private void Awake()
     {
@@ -14,17 +16,23 @@ public class MainSceneManager : MonoBehaviour
     private void Init()
     {
         SocketManager s = SocketManager.Instance;
+        User u = User.Instance;
     }
 
     // STC
     private void AddSocketEvent()
     {
         SocketManager.Instance.On<STCRenderData>("render", OnRender);
+        SocketManager.Instance.On<STCInviteCodeData>("inviteCode", OnInviteCode);
 
         void OnRender(STCRenderData data)
         {
             User.Instance.Character = data.character;
             SceneManager.LoadScene((int)SceneType.Game);
+        }
+        void OnInviteCode(STCInviteCodeData data)
+        {
+            inviteCode.text = "INVITE CODE: " + data.roomId;
         }
     }
 

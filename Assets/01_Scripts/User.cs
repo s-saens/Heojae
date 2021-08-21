@@ -31,13 +31,7 @@ public class User
     }
 
     private string roomId;
-    public string RoomId
-    {
-        get
-        {
-            return roomId;
-        }
-    }
-    
+    public string RoomId {get; set;}
+
     public CharacterType Character {get; set;}
 }
