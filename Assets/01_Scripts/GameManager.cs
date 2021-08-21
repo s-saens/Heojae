@@ -23,11 +23,25 @@ public class GameManager : MonoBehaviour
         BindButtons();
     }
 
+    private void SetRoleUI()
+    {
+        if(User.Instance.Character == CharacterType.archaeologist)
+        {
+            inputReceivers.buttonLeft.gameObject.SetActive(false);
+            inputReceivers.buttonRight.gameObject.SetActive(false);
+        }
+        else
+        {
+            inputReceivers.touchScreen.gameObject.SetActive(false);
+        }
+    }
+
     private void InitControllers()
     {
         controllers.moveController.Init(objects);
         controllers.hookController.Init(objects);
         controllers.cameraController.Init(objects);
+        controllers.syncController.Init(objects);
     }
 
     private void BindButtons()
@@ -52,5 +66,4 @@ public class GameManager : MonoBehaviour
     {
         controllers.hookController.OnClickTouchScreen(touchPosition);
     }
-
 }

@@ -25,6 +25,7 @@ public class HookController : MonoBehaviour
         {
             if (testFlag == true)
             {
+                Debug.Log("STC MOUSE DIRECTION : " + data.Direction);
                 MakeRope(data.Direction);
                 // testFlag = false;
             }

@@ -44,11 +44,13 @@ public class MainSceneManager : MonoBehaviour
     public void GameStartHost(int characterType)
     {
         Dictionary<string, object> ctsData = new Dictionary<string, object>();
+        User.Instance.isHost = true;
         ctsData.Add("character", characterType);
         SocketManager.Instance.Emit("host", ctsData);
     }
     public void GameStartJoin()
     {
+        User.Instance.isHost = false;
         User.Instance.RoomId = roomIdInputFieldText.text;
         SocketManager.Instance.Emit("join");
     }

@@ -3,9 +3,20 @@ using System;
 
 // mouse
 [Serializable]
-public class STCMoveData
+public class STCSyncData
 {
-    public Direction direction;
+    public VectorSERVER ball;
+    public VectorSERVER wire;
+}
+public class VectorSERVER
+{
+    public float x;
+    public float y;
+    public VectorSERVER(Vector2 vector2)
+    {
+        x = vector2.x;
+        y = vector2.y;
+    }
 }
 
 // cut

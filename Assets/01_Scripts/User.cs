@@ -31,6 +31,7 @@ public class User
     }
 
     public string RoomId {get; set;}
+    public bool isHost;
 
     public CharacterType Character {get; set;}
 }

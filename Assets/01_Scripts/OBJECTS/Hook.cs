@@ -25,6 +25,17 @@ public class Hook : MonoBehaviour
     private IEnumerator throwCoroutine;
     private IEnumerator returnCoroutine;
 
+    public Vector2 Position
+    {
+        get
+        {
+            return new Vector2(this.transform.position.x, this.transform.position.y);
+        }
+        set
+        {
+            this.transform.position = value;
+        }
+    }
 
     private Ball ball;
     private DistanceJoint2D joint;

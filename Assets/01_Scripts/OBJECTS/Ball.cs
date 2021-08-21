@@ -17,6 +17,10 @@ public class Ball : MonoBehaviour
         {
             return this.transform.position;
         }
+        set
+        {
+            this.transform.position = value;
+        }
     }
 
     private void Start()

@@ -7,7 +7,8 @@ using System;
 public class CTSMoveData
 {
     string roomId;
-    Direction direction;
+    public VectorSERVER ball;
+    public VectorSERVER wire;
 }
 
 // cut
