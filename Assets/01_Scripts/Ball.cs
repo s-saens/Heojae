@@ -24,11 +24,11 @@ public class Ball : MonoBehaviour
 
     public void Left()
     {
-        rigid.AddForce(Vector2.left);
+        rigid.AddForce(Vector2.left * 100);
     }
 
     public void Right()
     {
-        rigid.AddForce(Vector2.right);
+        rigid.AddForce(Vector2.right * 100);
     }
 }

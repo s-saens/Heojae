@@ -14,9 +14,8 @@ public class GameController : MonoBehaviour
     public TouchScreen touchScreen;
 
     public Ball ball;
+    public Hook hook;
 
-
-    public Rope rope;
 
     public Player myPlayer;
 
@@ -33,24 +32,22 @@ public class GameController : MonoBehaviour
         touchScreen.Bind( OnClickTouchScreen );
     }
 
-    private void OnClickLeft()
+    public void OnClickLeft()
     {
         ball.Left();
     }
-    private void OnClickRight()
+    public void OnClickRight()
     {
         ball.Right();
     }
 
     bool testFlag = true;
-    private void OnClickTouchScreen(Vector2 touchPosition)
+    public void OnClickTouchScreen(Vector2 touchPosition)
     {
-        Debug.Log("OnClickTouchScreen!");
         if(testFlag == true)
         {
-            Debug.Log("YEAH!");
             MakeRope((touchPosition - ball.Position).normalized);
-            testFlag = false;
+            // testFlag = false;
         }
         else
         {
@@ -61,11 +58,25 @@ public class GameController : MonoBehaviour
 
     public void MakeRope(Vector2 direction)
     {
-        rope.Shoot(ball.Position, direction);
+        hook.gameObject.SetActive(true);
+        hook.ThrowHook(direction);
     }
 
     public void CutRope()
     {
-        rope.Cut();
+        hook.ReturnHook();
+    }
+
+
+    public LineRenderer line;
+
+    private void LateUpdate()
+    {
+        UpdateLine();
+    }
+    public void UpdateLine()
+    {
+        line.SetPosition(0, ball.transform.position);
+        line.SetPosition(1, hook.transform.position);
     }
 }
