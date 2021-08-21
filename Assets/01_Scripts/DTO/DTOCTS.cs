@@ -23,18 +23,6 @@ public class CTSMouseData
     public string roomId;
     public float x;
     public float y;
-    public Vector2 position;
-    public Vector2 Position
-    {
-        get
-        {
-            if(position == null)
-            {
-                position = new Vector2(x, y);
-            }
-            return position;
-        }
-    }
 }
 
 // host

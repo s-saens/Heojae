@@ -20,24 +20,38 @@ public class STCMouseData
 {
     public float x;
     public float y;
+    private Vector2 position;
+    public Vector2 Position
+    {
+        get
+        {
+            if (position == null)
+            {
+                position = new Vector2(x, y);
+            }
+            return position;
+        }
+    }
 }
 
 // inviteCode
 [Serializable]
 public class STCInviteCodeData
 {
-    string roomId;
+    public string roomId;
 }
 
 // render
 [Serializable]
 public class STCRenderData
 {
-    CharacterType character;
+    public CharacterType character;
 }
 
 // start
 [Serializable]
 public class STCStartData
 {
+    public float x;
+    public float y;
 }

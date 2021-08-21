@@ -11,14 +11,11 @@ public class MoveController : MonoBehaviour
     public void Init(ObjectBundle ob)
     {
         this.objects = ob;
-    }
-
-    // STC
-    private void Start()
-    {
         AddSocketEvent();
     }
 
+
+    // STC
     public void AddSocketEvent()
     {
         // On
@@ -31,6 +28,18 @@ public class MoveController : MonoBehaviour
             dirState = data.direction;
         }
     }
+    private void Update()
+    {
+        if (dirState == Direction.Left)
+        {
+            objects.ball.rigid.AddForce(this.transform.right * strength * (-1));
+        }
+        else if (dirState == Direction.Right)
+        {
+            objects.ball.rigid.AddForce(this.transform.right * strength);
+        }
+    }
+
 
     // CTS
     public void OnClickStartMoveButton(Direction direction)
@@ -60,17 +69,5 @@ public class MoveController : MonoBehaviour
         Dictionary<string, object> ctsData = new Dictionary<string, object>();
         ctsData.Add("direction", Direction.None);
         SocketManager.Instance.Emit("move", ctsData);
-    }
-
-    private void Update()
-    {
-        if (dirState == Direction.Left)
-        {
-            objects.ball.rigid.AddForce(this.transform.right * strength * (-1));
-        }
-        else if (dirState == Direction.Right)
-        {
-            objects.ball.rigid.AddForce(this.transform.right * strength);
-        }
     }
 }
