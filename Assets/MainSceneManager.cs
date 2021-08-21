@@ -17,6 +17,7 @@ public class MainSceneManager : MonoBehaviour
     {
         SocketManager s = SocketManager.Instance;
         User u = User.Instance;
+        AddSocketEvent();
     }
 
     // STC
