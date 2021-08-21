@@ -25,6 +25,7 @@ public class Hook : MonoBehaviour
     private void Init()
     {
         this.joint = this.GetComponent<DistanceJoint2D>();
+        ReturnHook();
     }
 
     public void ThrowHook(Vector2 direction)
@@ -90,6 +91,7 @@ public class Hook : MonoBehaviour
             {
                 StopCoroutine(returnCoroutine);
             }
+            this.joint.distance = Vector2.Distance(ball.Position, this.transform.position);
             this.joint.enabled = true;
         }
         else if(coll.CompareTag("Ball"))
