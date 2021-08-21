@@ -46,9 +46,8 @@ public class MainSceneManager : MonoBehaviour
     }
     public void GameStartJoin(string roomId)
     {
-        Dictionary<string, object> ctsData = new Dictionary<string, object>();
-        ctsData.Add("roomId", roomId);
-        SocketManager.Instance.Emit("join", ctsData);
+        User.Instance.RoomId = roomId;
+        SocketManager.Instance.Emit("join");
     }
     public void Settings()
     {
