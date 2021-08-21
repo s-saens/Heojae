@@ -39,7 +39,7 @@ public class Hook : MonoBehaviour
             StopCoroutine(throwCoroutine);
         }
 
-        Vector2 endPoint = ball.Position + direction * range;
+        Vector2 endPoint = ball.Position + direction * range * 1.1f;
         throwCoroutine = ThrowCoroutine(endPoint);
         StartCoroutine(throwCoroutine);
     }
@@ -104,4 +104,5 @@ public class Hook : MonoBehaviour
             this.joint.enabled = false;
         }
     }
+
 }
