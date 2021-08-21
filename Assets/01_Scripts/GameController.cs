@@ -27,8 +27,8 @@ public class GameController : MonoBehaviour
     private void BindButtons()
     {
         // Player - 고고학자: 움직이기
-        buttonLeft.OnClickAsObservable().Subscribe( _ => OnClickLeft() );
-        buttonRight.OnClickAsObservable().Subscribe( _ => OnClickRight() );
+        // buttonLeft.OnClickAsObservable().Subscribe( _ => OnClickLeft() );
+        // buttonRight.OnClickAsObservable().Subscribe( _ => OnClickRight() );
         touchScreen.Bind( OnClickTouchScreen );
     }
 
