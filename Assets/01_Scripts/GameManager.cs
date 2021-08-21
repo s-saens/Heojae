@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        SocketManager.Instance.Emit("renderComplete");
         InitControllers();
         BindButtons();
     }

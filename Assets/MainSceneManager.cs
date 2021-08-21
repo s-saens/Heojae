@@ -7,6 +7,7 @@ public class MainSceneManager : MonoBehaviour
 {
     public Camera cam;
     public Text inviteCode;
+    public Text roomIdInputFieldText;
 
     private void Awake()
     {
@@ -44,9 +45,9 @@ public class MainSceneManager : MonoBehaviour
         ctsData.Add("character", characterType);
         SocketManager.Instance.Emit("host", ctsData);
     }
-    public void GameStartJoin(string roomId)
+    public void GameStartJoin()
     {
-        User.Instance.RoomId = roomId;
+        User.Instance.RoomId = roomIdInputFieldText.text;
         SocketManager.Instance.Emit("join");
     }
     public void Settings()
