@@ -12,3 +12,9 @@ public enum CharacterType
     archaeologist,
     assistant
 }
+
+public enum SceneType
+{
+    Lobby,
+    Game
+}
