@@ -1,68 +1,34 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
+using System;
 
-public enum Direction
-{
-    None,
-    Left,
-    Right
-}
+
 public class MoveButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public Ball ball;
     public Direction direction;
-    private Direction dirState;
-    private float strength = 2;
-    private float maxVeclocity = 10;
 
+    public Action<Direction> OnClickStartMoveButton;
+    public Action OnClickEndMoveButton;
+
+
+    public void BindClickStart(Action<Direction> action)
+    {
+        OnClickStartMoveButton += action;
+    }
+    public void BindClickEnd(Action action)
+    {
+        OnClickEndMoveButton += action;
+    }
+
+    // Input
     public void OnPointerDown(PointerEventData e)
     {
-        // Socket.Emit
-        if (direction == Direction.Left)
-        {
-            dirState = Direction.Left;
-        }
-        else if (direction == Direction.Right)
-        {
-            dirState = Direction.Right;
-        }
+        OnClickStartMoveButton.Invoke(this.direction);
     }
-
-    public void Start()
-    {
-        AddSocketEvent();
-    }
-
-    public void AddSocketEvent()
-    {
-        SocketManager.Instance.On<STCCommandData>("move", OnCommandMove);
-    }
-
-    public void OnCommandMove(STCCommandData data)
-    {
-        
-    }
-
     public void OnPointerUp(PointerEventData e)
     {
-        dirState = Direction.None;
+        OnClickEndMoveButton.Invoke();
     }
 
-    private void Update()
-    {
-        if(dirState == Direction.Left)
-        {
-            ball.rigid.AddForce(this.transform.right * strength * (-1));
-        }
-        else if(dirState == Direction.Right)
-        {
-            ball.rigid.AddForce(this.transform.right * strength);
-        }
-
-        // 속도제한
-        if(ball.rigid.velocity.magnitude > maxVeclocity)
-        {
-            ball.rigid.velocity = ball.rigid.velocity.normalized * maxVeclocity;
-        }
-    }
 }

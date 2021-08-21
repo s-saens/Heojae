@@ -3,6 +3,13 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     public Rigidbody2D rigid;
+    public float Radius
+    {
+        get
+        {
+            return this.transform.localScale.y;
+        }
+    }
 
     public Vector2 Position
     {

@@ -6,7 +6,7 @@ public class TouchScreen : MonoBehaviour, IPointerDownHandler
 {
     public Action<Vector2> OnClickTouchScreen;
 
-    public void Bind(Action<Vector2> action)
+    public void BindClick(Action<Vector2> action)
     {
         OnClickTouchScreen += action;
     }

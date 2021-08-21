@@ -5,25 +5,33 @@ using System.Collections;
 
 public class Hook : MonoBehaviour
 {
+    private Collider2D coll2D;
+    public Collider2D Coll2D
+    {
+        get
+        {
+            if(coll2D == null)
+            {
+                coll2D = this.GetComponent<Collider2D>();
+            }
+            return this.coll2D;
+        }
+    }
+
     private float range = 5;
     private float throwSpeed = 6;
     private float returnSpeed = 6;
-    private DistanceJoint2D joint;
 
     private IEnumerator throwCoroutine;
     private IEnumerator returnCoroutine;
 
 
-    public Ball ball;
-    public LineRenderer line;
+    private Ball ball;
+    private DistanceJoint2D joint;
 
-    private void Start()
+    public void InitHook(Ball ball)
     {
-        Init();
-    }
-
-    private void Init()
-    {
+        this.ball = ball;
         this.joint = this.GetComponent<DistanceJoint2D>();
         ReturnHook();
     }
@@ -104,5 +112,4 @@ public class Hook : MonoBehaviour
             this.joint.enabled = false;
         }
     }
-
 }
