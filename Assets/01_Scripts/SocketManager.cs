@@ -40,7 +40,7 @@ public class SocketManager
             eventName, data =>
             {
                 jsonObject = ConvertJsonToObject<T>(data);
-                Debug.Log("[SOCKET ON]" + eventName + "\n\n" + jsonObject + "\n\n");
+                Debug.Log("[SOCKET ON]" + eventName + "\n\n" + data + "\n\n");
                 callBack.Invoke(jsonObject);
             }
         );

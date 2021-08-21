@@ -11,6 +11,7 @@ public class MainSceneManager : MonoBehaviour
 
     private void Awake()
     {
+        Application.targetFrameRate = 40;
         Init();
     }
 
