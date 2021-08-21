@@ -20,16 +20,16 @@ public class STCMouseData
 {
     public float x;
     public float y;
-    private Vector2 position;
-    public Vector2 Position
+    private Vector2 dir;
+    public Vector2 Direction
     {
         get
         {
-            if (position == null)
+            if (dir == null)
             {
-                position = new Vector2(x, y);
+                dir = new Vector2(x, y);
             }
-            return position;
+            return dir;
         }
     }
 }

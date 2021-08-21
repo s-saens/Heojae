@@ -13,7 +13,7 @@ public class HookController : MonoBehaviour
         objects.hook.InitHook(this.objects.ball);
     }
 
-    
+
     // STC
     public void AddSocketEvent()
     {
@@ -25,7 +25,7 @@ public class HookController : MonoBehaviour
         {
             if (testFlag == true)
             {
-                MakeRope((data.Position - objects.ball.Position).normalized);
+                MakeRope(data.Direction);
                 // testFlag = false;
             }
             else
@@ -50,8 +50,9 @@ public class HookController : MonoBehaviour
     public void OnClickTouchScreen(Vector2 touchPosition)
     {
         Dictionary<string, object> ctsData = new Dictionary<string, object>();
-        ctsData.Add("x", touchPosition.x);
-        ctsData.Add("y", touchPosition.y);
+        Vector2 dir = (touchPosition - objects.ball.Position).normalized;
+        ctsData.Add("x", dir.x);
+        ctsData.Add("y", dir.y);
         SocketManager.Instance.Emit("mouse", ctsData);
     }
 

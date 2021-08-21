@@ -39,8 +39,8 @@ public class SocketManager
         (
             eventName, data =>
             {
-                Debug.Log("[SOCKET ON]" + eventName + "\n\n" + data + "\n\n");
                 jsonObject = ConvertJsonToObject<T>(data);
+                Debug.Log("[SOCKET ON]" + eventName + "\n\n" + jsonObject + "\n\n");
                 callBack.Invoke(jsonObject);
             }
         );
@@ -54,8 +54,8 @@ public class SocketManager
     {
         data.Add("roomId", User.Instance.RoomId);
 
-        Debug.Log("[SOCKET EMIT]" + eventName + "\n\n" + data + "\n\n");
         string jsonString = JsonConvert.SerializeObject(data);
+        Debug.Log("[SOCKET EMIT]" + eventName + "\n\n" + jsonString + "\n\n");
 
         socket.EmitJson(eventName, jsonString);
     }
@@ -64,8 +64,8 @@ public class SocketManager
         Dictionary<string, object> data = new Dictionary<string, object>();
         data.Add("roomId", User.Instance.RoomId);
 
-        Debug.Log("[SOCKET EMIT(Plain)]" + eventName + "\n\n" + data + "\n\n");
         string jsonString = JsonConvert.SerializeObject(data);
+        Debug.Log("[SOCKET EMIT(Plain)]" + eventName + "\n\n" + jsonString + "\n\n");
 
         socket.EmitJson(eventName, jsonString);
     }

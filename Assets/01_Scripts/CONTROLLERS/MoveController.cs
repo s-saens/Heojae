@@ -24,7 +24,7 @@ public class MoveController : MonoBehaviour
         // Functions
         void OnMove(STCMoveData data)
         {
-            Debug.Log(data.direction);
+            if(data.direction != Direction.None) Debug.Log(data.direction);
             dirState = data.direction;
         }
     }
@@ -32,11 +32,11 @@ public class MoveController : MonoBehaviour
     {
         if (dirState == Direction.Left)
         {
-            objects.ball.rigid.AddForce(this.transform.right * strength * (-1));
+            objects.ball.rigid.AddForce(this.transform.right * strength * Time.deltaTime * 60 * (-1));
         }
         else if (dirState == Direction.Right)
         {
-            objects.ball.rigid.AddForce(this.transform.right * strength);
+            objects.ball.rigid.AddForce(this.transform.right * strength * Time.deltaTime * 60);
         }
     }
 
