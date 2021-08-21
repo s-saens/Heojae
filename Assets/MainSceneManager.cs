@@ -34,6 +34,7 @@ public class MainSceneManager : MonoBehaviour
         }
         void OnInviteCode(STCInviteCodeData data)
         {
+            User.Instance.RoomId = data.roomId;
             inviteCode.text = "INVITE CODE: " + data.roomId;
         }
     }

@@ -26,11 +26,10 @@ public class User
 
         void OnInvite(STCInviteCodeData data)
         {
-            this.roomId = data.roomId;
+            this.RoomId = data.roomId;
         }
     }
 
-    private string roomId;
     public string RoomId {get; set;}
 
     public CharacterType Character {get; set;}

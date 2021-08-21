@@ -32,9 +32,10 @@ public class GameManager : MonoBehaviour
 
     private void BindButtons()
     {
-        // Player - 고고학자: 움직이기
         inputReceivers.buttonLeft.BindClickStart( OnClickStartMoveButton );
         inputReceivers.buttonLeft.BindClickEnd( OnClickEndMoveButton );
+        inputReceivers.buttonRight.BindClickStart(OnClickStartMoveButton);
+        inputReceivers.buttonRight.BindClickEnd(OnClickEndMoveButton);
         inputReceivers.touchScreen.BindClick( OnClickTouchScreen );
     }
 
