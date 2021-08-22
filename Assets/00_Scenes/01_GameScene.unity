@@ -1866,7 +1866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxY: -10
-  minY: -20.88
+  minY: -20
   speed: 5
   hook: {fileID: 1078379480}
 --- !u!1 &1046257545
@@ -3177,7 +3177,6 @@ MonoBehaviour:
   moveController: {fileID: 864056276}
   hookController: {fileID: 31880640}
   cameraController: {fileID: 1402723028}
-  syncController: {fileID: 1406071338}
 --- !u!4 &1624646125
 Transform:
   m_ObjectHideFlags: 0
