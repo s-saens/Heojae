@@ -209,7 +209,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -849,8 +849,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572010709}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.9, y: 36.291, z: 0}
-  m_LocalScale: {x: -5.42756, y: 110.44773, z: 1}
+  m_LocalPosition: {x: 29.4983, y: 36.291, z: 0}
+  m_LocalScale: {x: -18.624128, y: 110.44773, z: 1}
   m_Children: []
   m_Father: {fileID: 738267221}
   m_RootOrder: 2
@@ -1298,7 +1298,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1643,7 +1643,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1733,6 +1733,7 @@ GameObject:
   - component: {fileID: 934695391}
   - component: {fileID: 934695390}
   - component: {fileID: 934695389}
+  - component: {fileID: 934695392}
   m_Layer: 0
   m_Name: elevator
   m_TagString: Untagged
@@ -1748,8 +1749,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934695387}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.6, y: -16.5, z: 0}
-  m_LocalScale: {x: -11.571973, y: -4.5669374, z: 1}
+  m_LocalPosition: {x: -16.6, y: -20.8858, z: 0}
+  m_LocalScale: {x: -11.571973, y: -17.778631, z: 1}
   m_Children: []
   m_Father: {fileID: 738267221}
   m_RootOrder: 12
@@ -1852,6 +1853,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &934695392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934695387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c64fb4c751ed74000ade72a84115b4be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxY: -10
+  minY: -20.88
+  speed: 5
+  hook: {fileID: 1078379480}
 --- !u!1 &1046257545
 GameObject:
   m_ObjectHideFlags: 0
@@ -1895,7 +1912,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2128,6 +2145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a998da600216947d3a110ea1ca772e9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joint: {fileID: 0}
 --- !u!1 &1250967051
 GameObject:
   m_ObjectHideFlags: 0
@@ -2155,8 +2173,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250967051}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24.2699, y: 36.3617, z: 0}
-  m_LocalScale: {x: -5.42756, y: 110.21231, z: 1}
+  m_LocalPosition: {x: -33.8099, y: 26.7877, z: 0}
+  m_LocalScale: {x: -26.454695, y: 129.35619, z: 1}
   m_Children: []
   m_Father: {fileID: 738267221}
   m_RootOrder: 1
@@ -2332,7 +2350,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2454,6 +2472,49 @@ Transform:
   m_Father: {fileID: 1624646125}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1406071337
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1406071339}
+  - component: {fileID: 1406071338}
+  m_Layer: 0
+  m_Name: SyncController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1406071338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406071337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dcf146d7d32546caad2c56590380336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1406071339
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406071337}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1624646125}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1449531021
 GameObject:
   m_ObjectHideFlags: 0
@@ -2469,7 +2530,7 @@ GameObject:
   - component: {fileID: 1449531026}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2633,7 +2694,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2754,7 +2815,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2859,8 +2920,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1542182061}
   m_LocalRotation: {x: -0, y: -0, z: 0.14279999, w: 0.9897516}
-  m_LocalPosition: {x: 1.13, y: -10.05, z: 0}
-  m_LocalScale: {x: 45.503597, y: 3.110998, z: 1}
+  m_LocalPosition: {x: -1.3081, y: -20.2064, z: 0}
+  m_LocalScale: {x: 55.92392, y: 21.217007, z: 1}
   m_Children: []
   m_Father: {fileID: 738267221}
   m_RootOrder: 0
@@ -3006,7 +3067,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -3116,7 +3177,7 @@ MonoBehaviour:
   moveController: {fileID: 864056276}
   hookController: {fileID: 31880640}
   cameraController: {fileID: 1402723028}
-  syncController: {fileID: 0}
+  syncController: {fileID: 1406071338}
 --- !u!4 &1624646125
 Transform:
   m_ObjectHideFlags: 0
@@ -3131,6 +3192,7 @@ Transform:
   - {fileID: 864056277}
   - {fileID: 31880641}
   - {fileID: 1402723029}
+  - {fileID: 1406071339}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3177,7 +3239,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
