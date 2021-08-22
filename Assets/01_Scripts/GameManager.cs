@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour
         controllers.moveController.Init(objects);
         controllers.hookController.Init(objects);
         controllers.cameraController.Init(objects);
-        controllers.syncController.Init(objects);
     }
 
     private void BindButtons()

@@ -9,33 +9,9 @@ public class HookController : MonoBehaviour
     public void Init(ObjectBundle ob)
     {
         this.objects = ob;
-        AddSocketEvent();
         objects.hook.InitHook(this.objects.ball);
     }
 
-
-    // STC
-    public void AddSocketEvent()
-    {
-        // On
-        SocketManager.Instance.On<STCMouseData>("mouse", OnMouse);
-
-        // Functions
-        void OnMouse(STCMouseData data)
-        {
-            if (testFlag == true)
-            {
-                Debug.Log("STC MOUSE DIRECTION : " + data.Direction);
-                MakeRope(data.Direction);
-                // testFlag = false;
-            }
-            else
-            {
-                CutRope();
-                testFlag = true;
-            }
-        }
-    }
     public void MakeRope(Vector2 direction)
     {
         objects.hook.gameObject.SetActive(true);
@@ -50,11 +26,16 @@ public class HookController : MonoBehaviour
     // CTS
     public void OnClickTouchScreen(Vector2 touchPosition)
     {
-        Dictionary<string, object> ctsData = new Dictionary<string, object>();
-        Vector2 dir = (touchPosition - objects.ball.Position).normalized;
-        ctsData.Add("x", dir.x);
-        ctsData.Add("y", dir.y);
-        SocketManager.Instance.Emit("mouse", ctsData);
+        if (testFlag == true)
+        {
+            MakeRope((touchPosition - objects.ball.Position).normalized);
+            // testFlag = false;
+        }
+        else
+        {
+            CutRope();
+            testFlag = true;
+        }
     }
 
 
