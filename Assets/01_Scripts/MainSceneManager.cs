@@ -18,7 +18,7 @@ public class MainSceneManager : MonoBehaviour
 
     private void Init()
     {
-        SocketManager s = SocketManager.Instance;
+        GameSocketManager s = GameSocketManager.Instance;
         User u = User.Instance;
         AddSocketEvent();
     }
@@ -26,8 +26,8 @@ public class MainSceneManager : MonoBehaviour
     // STC
     private void AddSocketEvent()
     {
-        SocketManager.Instance.On<STCRenderData>("render", OnRender);
-        SocketManager.Instance.On<STCInviteCodeData>("inviteCode", OnInviteCode);
+        GameSocketManager.Instance.On<STCRenderData>("render", OnRender);
+        GameSocketManager.Instance.On<STCInviteCodeData>("inviteCode", OnInviteCode);
 
         void OnRender(STCRenderData data)
         {
@@ -48,14 +48,14 @@ public class MainSceneManager : MonoBehaviour
         Dictionary<string, object> ctsData = new Dictionary<string, object>();
         User.Instance.isHost = true;
         ctsData.Add("character", characterType);
-        SocketManager.Instance.Emit("host", ctsData);
+        GameSocketManager.Instance.Emit("host", ctsData);
     }
     public void GameStartJoin()
     {
         User.Instance.isHost = false;
         User.Instance.RoomId = roomIdInputField.text;
         Debug.Log(User.Instance.RoomId);
-        SocketManager.Instance.Emit("join");
+        GameSocketManager.Instance.Emit("join");
     }
     public void Settings()
     {
@@ -70,7 +70,7 @@ public class MainSceneManager : MonoBehaviour
 
     // color change
 
-    private void Update()
+    private void FixedUpdate()
     {
         UpdateCameraBackgroundColor();
     }

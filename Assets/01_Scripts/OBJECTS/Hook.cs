@@ -38,7 +38,7 @@ public class Hook : MonoBehaviour
     }
 
     private Ball ball;
-    private DistanceJoint2D joint;
+    public DistanceJoint2D joint;
 
     public void InitHook(Ball ball)
     {

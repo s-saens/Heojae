@@ -4,16 +4,16 @@ using System.Collections.Generic;
 using socket.io;
 using Newtonsoft.Json;
 
-public class SocketManager
+public class GameSocketManager
 {
-    private static SocketManager instance;
-    public static SocketManager Instance
+    private static GameSocketManager instance;
+    public static GameSocketManager Instance
     {
         get
         {
             if(instance == null)
             {
-                instance = new SocketManager();
+                instance = new GameSocketManager();
             }
             return instance;
         }
@@ -21,7 +21,7 @@ public class SocketManager
 
     public Socket socket;
 
-    private SocketManager()
+    private GameSocketManager()
     {
         Connect();
     }

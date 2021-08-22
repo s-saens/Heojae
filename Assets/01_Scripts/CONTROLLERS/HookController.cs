@@ -18,7 +18,7 @@ public class HookController : MonoBehaviour
     public void AddSocketEvent()
     {
         // On
-        SocketManager.Instance.On<STCMouseData>("mouse", OnMouse);
+        GameSocketManager.Instance.On<STCMouseData>("mouse", OnMouse);
 
         // Functions
         void OnMouse(STCMouseData data)
@@ -54,19 +54,19 @@ public class HookController : MonoBehaviour
         Vector2 dir = (touchPosition - objects.ball.Position).normalized;
         ctsData.Add("x", dir.x);
         ctsData.Add("y", dir.y);
-        SocketManager.Instance.Emit("mouse", ctsData);
+        GameSocketManager.Instance.Emit("mouse", ctsData);
     }
 
 
     // Just View Update
-    private void Update()
+    private void FixedUpdate()
     {
         UpdateHookCollider();
     }
     private void UpdateHookCollider()
     {
         float distance = Vector2.Distance(objects.ball.Position, objects.hook.transform.position);
-        objects.hook.Coll2D.enabled = (distance > objects.ball.Radius * 0.5f);
+        objects.hook.Coll2D.enabled = (distance > objects.ball.Radius * 0.6f);
     }
     private void LateUpdate()
     {

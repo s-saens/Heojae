@@ -14,7 +14,7 @@ public class SyncController : MonoBehaviour
 
     private void AddSocketEvent()
     {
-        SocketManager.Instance.On<STCSyncData>("sync", OnSync);
+        GameSocketManager.Instance.On<STCSyncData>("sync", OnSync);
 
         void OnSync(STCSyncData data)
         {
@@ -24,14 +24,15 @@ public class SyncController : MonoBehaviour
     }
 
 
-    public void Update()
+    public void FixedUpdate()
     {
         if(User.Instance.Character == CharacterType.archaeologist)
         {
             Dictionary<string, object> ctsData = new Dictionary<string, object>();
             ctsData.Add("ball", new VectorSERVER(objects.ball.Position));
             ctsData.Add("wire", new VectorSERVER(objects.hook.Position));
-            SocketManager.Instance.Emit("sync", ctsData);
+            ctsData.Add("time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"));
+            GameSocketManager.Instance.Emit("sync", ctsData);
         }
     }
 }
