@@ -35,9 +35,8 @@ public class GameManager : MonoBehaviour
 
     private void ResetPosition(Vector2 pos)
     {
-        objects.ball.Position = Vector2.zero;
+        objects.ball.ResetTransform();
         objects.hook.Position = Vector2.zero;
-        objects.ball.rigid.velocity = Vector2.zero;
     }
 
     private void SetRoleUI()
