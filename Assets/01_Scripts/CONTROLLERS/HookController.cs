@@ -12,10 +12,10 @@ public class HookController : MonoBehaviour
         objects.hook.InitHook(this.objects.ball);
     }
 
-    public void MakeRope(Vector2 direction)
+    public void MakeRope(Vector2 direction, float strength)
     {
         objects.hook.gameObject.SetActive(true);
-        objects.hook.ThrowHook(direction);
+        objects.hook.ThrowHook(direction, strength);
     }
     public void CutRope()
     {
@@ -24,11 +24,11 @@ public class HookController : MonoBehaviour
 
 
     // CTS
-    public void OnClickTouchScreen(Vector2 touchPosition)
+    public void OnClickTouchScreen(Vector2 direction, float strength)
     {
         if (testFlag == true)
         {
-            MakeRope((touchPosition - objects.ball.Position).normalized);
+            MakeRope(direction, strength);
             // testFlag = false;
         }
         else

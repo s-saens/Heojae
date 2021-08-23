@@ -18,9 +18,10 @@ public class Hook : MonoBehaviour
         }
     }
 
-    private float range = 5;
-    private float throwSpeed = 6;
-    private float returnSpeed = 6;
+    private float throwDuration = 1;
+    private float range = 2.5f;
+    private float throwSpeed = 15;
+    private float returnSpeed = 15;
 
     private IEnumerator throwCoroutine;
     private IEnumerator returnCoroutine;
@@ -47,8 +48,9 @@ public class Hook : MonoBehaviour
         ReturnHook();
     }
 
-    public void ThrowHook(Vector2 direction)
+    public void ThrowHook(Vector2 direction, float strength)
     {
+        this.range = strength;
         if (returnCoroutine != null)
         {
             StopCoroutine(returnCoroutine);
@@ -58,8 +60,7 @@ public class Hook : MonoBehaviour
             StopCoroutine(throwCoroutine);
         }
 
-        Vector2 endPoint = ball.Position + direction * range * 1.1f;
-        throwCoroutine = ThrowCoroutine(endPoint);
+        throwCoroutine = ThrowCoroutine(direction);
         StartCoroutine(throwCoroutine);
     }
     public void ReturnHook()
@@ -77,13 +78,21 @@ public class Hook : MonoBehaviour
         StartCoroutine(returnCoroutine);
         
     }
-    private IEnumerator ThrowCoroutine(Vector2 endPoint)
+    private IEnumerator ThrowCoroutine(Vector2 direction)
     {
         Debug.Log("ThrowCoroutine Start");
-        while (Vector2.Distance(ball.Position, this.transform.position) < range && this.joint.enabled == false)
+        for(float i=0 ; i < throwDuration ; i+=Time.deltaTime)
         {
-            this.transform.position = Vector2.MoveTowards(this.transform.position, endPoint, Time.deltaTime * range * throwSpeed);
-            yield return 0;
+            if(this.joint.enabled == true)
+            {
+                break;
+            }
+            if(Vector2.Distance(ball.Position, this.transform.position) > this.range)
+            {
+                break;
+            }
+            this.transform.Translate(direction * Time.deltaTime * throwSpeed);
+            yield return new WaitForFixedUpdate();
         }
         Debug.Log("ThrowEnd");
         ReturnHook();
@@ -93,8 +102,8 @@ public class Hook : MonoBehaviour
         Debug.Log("Return");
         while (true)
         {
-            this.transform.position = Vector2.MoveTowards(this.transform.position, ball.Position, Time.deltaTime * range * returnSpeed);
-            yield return 0;
+            this.transform.position = Vector2.MoveTowards(this.transform.position, ball.Position, Time.deltaTime * throwDuration * returnSpeed);
+            yield return new WaitForFixedUpdate();
         }
     }
 

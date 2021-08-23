@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public ControllerBundle controllers;
     public InputReceiverBundle inputReceivers;
 
+    public float hookStrength = 2.5f;
+
     private void Awake()
     {
         // SocketManager 초기화용 코드
@@ -21,6 +23,21 @@ public class GameManager : MonoBehaviour
         SocketManager.Instance.Emit("renderComplete");
         InitControllers();
         BindButtons();
+    }
+
+    private void Update()
+    {
+        if(objects.ball.transform.position.y < -10)
+        {
+            ResetPosition(Vector2.zero);
+        }
+    }
+
+    private void ResetPosition(Vector2 pos)
+    {
+        objects.ball.Position = Vector2.zero;
+        objects.hook.Position = Vector2.zero;
+        objects.ball.rigid.velocity = Vector2.zero;
     }
 
     private void SetRoleUI()
@@ -49,7 +66,7 @@ public class GameManager : MonoBehaviour
         inputReceivers.buttonLeft.BindClickEnd( OnClickEndMoveButton );
         inputReceivers.buttonRight.BindClickStart(OnClickStartMoveButton);
         inputReceivers.buttonRight.BindClickEnd(OnClickEndMoveButton);
-        inputReceivers.touchScreen.BindClick( OnClickTouchScreen );
+        inputReceivers.touchScreen.BindClick( OnDrag );
     }
 
     public void OnClickStartMoveButton(Direction direction)
@@ -61,8 +78,13 @@ public class GameManager : MonoBehaviour
         controllers.moveController.OnClickEndMoveButton();
     }
 
-    public void OnClickTouchScreen(Vector2 touchPosition)
+    public void OnDrag(Vector2 direction)
     {
-        controllers.hookController.OnClickTouchScreen(touchPosition);
+        controllers.hookController.OnClickTouchScreen(direction, hookStrength);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
