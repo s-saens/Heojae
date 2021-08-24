@@ -7,6 +7,7 @@ public class STCSyncData
 {
     public VectorSERVER ball;
     public VectorSERVER wire;
+    // public string time;
 }
 public class VectorSERVER
 {
@@ -31,16 +32,11 @@ public class STCMouseData
 {
     public float x;
     public float y;
-    private Vector2 dir;
     public Vector2 Direction
     {
         get
         {
-            if (dir == null)
-            {
-                dir = new Vector2(x, y);
-            }
-            return dir;
+            return new Vector2(x, y);
         }
     }
 }

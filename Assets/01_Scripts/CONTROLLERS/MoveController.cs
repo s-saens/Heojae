@@ -11,7 +11,7 @@ public class MoveController : MonoBehaviour
         this.objects = ob;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (dirState == Direction.Left)
         {

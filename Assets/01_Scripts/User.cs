@@ -22,7 +22,7 @@ public class User
 
     private void AddSocketEvent()
     {
-        SocketManager.Instance.On<STCInviteCodeData>("invite", OnInvite);
+        GameSocketManager.Instance.On<STCInviteCodeData>("invite", OnInvite);
 
         void OnInvite(STCInviteCodeData data)
         {
@@ -33,5 +33,5 @@ public class User
     public string RoomId {get; set;}
     public bool isHost;
 
-    public CharacterType Character {get; set;}
+    public CharacterType Character {get; set;} = CharacterType.archaeologist;
 }
