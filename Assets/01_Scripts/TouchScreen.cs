@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System;
 
-public class TouchScreen : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler, IPointerEnterHandler
+public class TouchScreen : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
     public Action<Vector2> OnTouchDragEnd;
     Vector2 touchStartPosition_canvas;
@@ -36,11 +36,6 @@ public class TouchScreen : MonoBehaviour, IPointerDownHandler, IDragHandler, IPo
         nowTouchPosition_canvas = touchStartPosition_canvas;
 
         line.SetPositions(new Vector3[] { touchStartPosition, touchStartPosition });
-    }
-
-    public void OnPointerEnter(PointerEventData e)
-    {
-        Debug.Log("EnTter;");
     }
 
     public void OnDrag(PointerEventData e)

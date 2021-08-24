@@ -12,6 +12,6 @@ public class CameraController : MonoBehaviour
 
     public void Update()
     {
-        objects.cam.transform.position = Vector3.Lerp(objects.cam.transform.position, objects.camPivot.transform.position, camEaseDuration);
+        objects.cam.transform.position = objects.camPivot.transform.position;
     }
 }
